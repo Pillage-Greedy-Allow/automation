@@ -61,12 +61,6 @@ iptables -A ICMP -j BLOCK
 iptables -A BLOCK -m recent --update --seconds 180 --name BLACKLIST --rsource -j DROP
 iptables -A BLOCK -m recent --set --name BLACKLIST --rsource -j DROP
 
-# Drop anything outbound that doesn't have a source IP of the machine.
-#     If the machine doesn't have an "eth0" interface, replace it with the right one.
-#     Or you can simply replace it with the proper IP between the "-s" and "-j", if known.
-#     Add multiple lines if there are multiple interfaces.
-#iptables -A OUTPUT ! -s $(ifconfig eth0 | awk '/inet\W/ {print $2}') -j DROP
-
 # Set the default policy for IPv4 and IPv6.
 iptables -P OUTPUT ACCEPT
 iptables -P INPUT DROP
