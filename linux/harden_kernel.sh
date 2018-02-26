@@ -6,7 +6,7 @@
 # Check to see if run as root
 if [ "$EUID" -ne 0 ]
 then
-  echo "Please run as Root!" 
+  echo "Please run as Root\!" 
   exit
 fi
 
