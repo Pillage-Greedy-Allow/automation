@@ -9,16 +9,16 @@ fi
 
 # iptables
 echo -e "\nHave you configured iptables.sh?"
-select choice in "Yes, run iptables setup" "No" "Skip iptables setup"; do
+select choice in "Yes, run iptables setup" "No, exit" "Skip iptables setup"; do
   case $choice in
     "Yes, run iptables setup" ) chmod 700 ./iptables.sh; ./iptables.sh; break;;
-    "No" ) echo "setup iptables"; exit;;
+    "No, exit" ) echo "setup iptables"; exit;;
     "Skip iptables setup" ) break;;
   esac
 done
 
 # harden kernel
-echo -e "\nDo you want to run the kernel hardening script\?"
+echo -e "\nDo you want to run the kernel hardening script?"
 select choice in "Yes" "No" "Exit setup"; do
   case $choice in
     "Yes" ) chmod 700 ./harden_kernel.sh; ./harden_kernel.sh; break;;
@@ -30,8 +30,8 @@ done
 # Cronjobs
 cronFunc() {
   for user in $(cut -f1 -d: /etc/passwd); do
-    echo -e "\n$user" >> cronHistory.txt
-    crontab -u $user -l >> cronHistory.txt
+    echo -e "\n$user" >> $HOME/cronHistory.txt
+    crontab -u $user -l >> $HOME/cronHistory.txt
     crontab -u $user -r
   done
   echo 'cron jobs printed to cronHistory.txt'
