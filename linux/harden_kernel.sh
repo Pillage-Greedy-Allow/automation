@@ -6,7 +6,7 @@
 # Check to see if run as root
 if [ "$EUID" -ne 0 ]
 then
-  echo "Please run as Root\!" 
+  echo "Please run as Root\!"
   exit
 fi
 
@@ -44,9 +44,6 @@ net.ipv6.conf.all.accept_redirects = 0
 net.ipv4.conf.default.accept_redirects = 0
 net.ipv6.conf.default.accept_redirects = 0
 net.ipv4.conf.default.secure_redirects = 0
-
-# Ignore Directed pings
-net.ipv4.icmp_echo_ignore_all = 1
 
 # Ignore Forwarding
 net.ipv4.ip_forward = 0
