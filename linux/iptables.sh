@@ -66,7 +66,7 @@ iptables -A ICMP -j BLOCK
 
 # Update the timestamp on the offending packet, if offender already exists in the blacklist.
 # Add them to the blacklist if they're not already in the blacklist.
-iptables -A BLOCK -m recent --update --seconds 180 --name BLACKLIST --rsource -j LOG --log-prefix '** BLACKLIST ** ' # helpful for debugging and finding attackers
+iptables -A BLOCK -j LOG --log-prefix '** BLACKLIST ** ' # helpful for debugging and finding attackers
 iptables -A BLOCK -m recent --update --seconds 180 --name BLACKLIST --rsource -j DROP
 iptables -A BLOCK -m recent --set --name BLACKLIST --rsource -j DROP
 
