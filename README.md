@@ -17,3 +17,7 @@ To log in iptables use the `-j LOG` flag. To add helpful flags use `-j LOG --log
 
 i.e.
 > `iptables -INPUT -s 127.0.0.1 -j LOG --log-prefix '** LOCALHOST ** '` adds a flag for local host traffic.
+
+## References
+
+[Iptables Guide](https://www.netfilter.org/documentation/HOWTO/packet-filtering-HOWTO-7.html)
